@@ -1,126 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anwar Puadi</title>
+    <!-- Sertakan stylesheet Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Curriculum Vitae</title>
+
     <style>
-      
-    
-        body {
-            background-color: #9ACD32 /* Ganti dengan kode warna yang Anda inginkan */
-        }
-  
-        /* Mengatur gaya navigasi */
-        nav {
-            background-color: #333;
-            text-align: center;
-            padding: 10px;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        /* Mengatur tombol navigasi */
-        nav a:hover {
-            background-color: #555;
-            color: #fff;
-            border-radius: 5px;
-        }
-
-        /* Styling header */
-        header {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        header h1 {
-            color: #333;
-        }
-
-
-/* Mengatur teks ke tengah secara vertikal */
-article h2 {
-    margin-top: 0; /* Menghapus margin atas pada elemen h2 */
-    padding-top: 20px; /* Menambah padding atas pada elemen h2 */
-}
-
-
-        /* Styling footer */
-        footer {
-            text-align: center;
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-        }
     </style>
 </head>
 
 <body>
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="My_Cv.html">My CV</a> |
-        <a href="contact.html">Contact</a> |
-        <a href="about.html">About me</a> |
-        <a href="login.html">Login</a>
-    </nav>
-
-    <hr />
-
     <header>
-        <img src="{{ ('img/war.JPG') }}" width="200" height="200" style="border-radius: 50%;" />
-        <h1>Anwar Puadi</h1>
-        <p>(Mahasiswa Teknik Informatika)</p>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a href="/" class="navbar-brand">
+                    Politeknik Negeri Bengkalis | D-IV Rekayasa Perangkat Lunak
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="{{ route('biodata') }}" class="nav-link">Biodata</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('berita') }}" class="nav-link">Berita</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('profile_lulusan') }}" class="nav-link">Profile Lulusan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('aktivitas_mahasiswa') }}" class="nav-link">Aktivitas Mahasiswa</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <hr />
+    <section id="home" class="text-center py-5">
+        <img src="{{ ('images/war.JPG') }}" width="100" alt="Your Name" class="rounded-circle">
 
-    <article>
-        <center>
-        <h2>Overview</h2>
-        <p>
-            "Saya adalah mahasiswa semester 5 di Politeknik Negeri Bengkalis<br>
-             Jurusan Teknik Informatika dengan program studi Rekayasa Perangkat Lunak<br>
-             Angkatan 2021. Hobby saya adalah menyanyi dan membaca novel."
-        </p>
-    </article>
-
-    <div style="max-width: 600px; margin: 3em auto">
-        <table border="1" width="100%">
-            <thead>
-                <tr>
-                    <th>Skill</th>
-                    <th>Pengalaman Organisasi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <ul>
-                            <li>Menguasai Ms. Office</li>
-                            <li>Figma Design</li>
-                            <li>Html Basic Pemula</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                            <li>Himpunan Mahadiksi</li>
-                            <li>Divisi Keagamaan di HMTI 21</li>
-                            <li>UKMI</li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <hr>
-    <footer>
-        <p>Copyright 2023 @Anwar Puadi</p>
+        <h1>Anwar Puadi</h1>
+        <p></p>
+        <hr class="mx-3">
+        <h3>About Me</h3>
+        <p>Nama saya Anwar puadi berasal dari Mandailing Natal SUmatera Utara. Saya mahasiswa prodi rekayasa perangkat lunak semester 5 </p>
+    </section>
+    <section id="cv" class="container pb-5">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Skill</th>
+                        <th>Experience</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Saya bisa bermain futsal dan badminton</td>
+                        <td>Agence NO 1!!</td>
+                    </tr>
+                    <tr>
+                        <td>Menguasai microsoft word</td>
+                        <td>bermain futsal</td>
+                    </tr>
+                    <!-- Tambahkan baris-baris tambahan sesuai dengan pengalaman Anda -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section id="contact">
+        <!-- Tambahkan informasi kontak Anda di sini -->
+    </section>
+    <section id="about">
+        <!-- Tambahkan informasi tentang diri Anda di sini -->
+    </section>
+    <section id="login">
+        <!-- Tambahkan form login atau informasi login di sini -->
+    </section>
+    <footer class="footer bg-dark text-white text-center py-3 mt-5">
+        Copyright 2023 anwar puadi
     </footer>
+
+    <!-- Sertakan skrip JavaScript Bootstrap (JQuery dan Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
+
 </html>
