@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <title>Admin Dashboard</title>
+    <title>Admin</title>
+
+    <link href="{{ asset('/') }}assets/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <link href="{{ asset('/') }}assets/plugins/fontawesome/css/all.min.css" rel="stylesheet" >
     <style>
     /* Add your custom CSS styles here */
 
@@ -17,7 +21,7 @@
     }
 
     .adminbck {
-        background-color: #343434;
+        background-color: green;
     }
 
     .sidebar {
@@ -26,7 +30,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        background-color: #333;
+        background-color: green;
         padding-top: 20px;
     }
 
@@ -51,12 +55,9 @@
 
 <body>
     <div class="sidebar">
-        <a href="{{ route('admin.home') }}">Home</a>
-        <a href="{{ route('admin.inputBerita') }}">Berita</a>
-        <a href="{{ route('admin.inputData') }}">Tambah Dosen</a>
-        <a href="{{ route('admin.buku') }}">Buku</a>
-        <a href="{{ route('admin.peminjaman') }}">Peminjaman</a>
-        <a class=" mt-lg-5" href="{{ route('logout') }}">Logout</a>
+        <a href="{{ route('admin.home') }}"><i class="fas fa-home"> Home</i></a>
+        <a href="{{ route('admin.pembeli') }}"><i class="fas fa-air-freshener"> Info Pembeli</i></a>
+        <a class=" mt-lg-5" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"> Logout</i></a>
     </div>
 
     <div class="content">
@@ -82,21 +83,66 @@
                 <form action="{{ route('admin.home') }}" method="GET">
                     @csrf
                     <div class="input-group">
-                        <input type="search" name="search" class="form-control rounded" placeholder="Cari nama admin"
+                        <input type="search" name="search" class="form-control rounded" placeholder="Cari nama Agen"
                             aria-label="Search" aria-describedby="search-addon" />
-                        <button type="submit" class="btn btn-outline-primary">Search</button>
+                        <button type="submit" class="btn btn-outline-primary"><i class="fas fa-search"></i></button>
                     </div>
                 </form>
             </div>
             <div class="col"></div>
         </div>
 
+        <div class="col"></div>
+                  <div class="col-2">
+                      <a class="btn btn-success" href="{{route('user.tambahJual') }}"
+                          style="text-decoration: none; margin-left: 30px"><i class="fas fa-plus"> Menambahkan data penjualan agen </i></a>
+                  </div>
+
+                  <table class="table" style="margin-top: 10px">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            
+                            <th scope="col">Nama Pangkalan</th>
+                            <th scope="col">harga</th>
+                            <th scope="col">Realisasi Bulan ini</th>
+                            <th scope="col">no telepon</th>
+                            <th scope="col">jenis persyaratan</th>
+                            <th scope="col">tanggal</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">Aksi</th>
+                        
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        @foreach ($data as $index => $jual)
+                        <tr>
+                            <td scope="row">{{ $index + $data->firstItem() }}</td>
+                            <td>
+                                <img style="width: 100px" src="{{asset('/images/' . $jual->gambar) }}" alt="cover jual">
+                            </td>
+                            
+                            <td>{{ $jual->harga }}</td>
+                            <td>{{ $jual->stok }}</td>
+                            <td>{{ $jual->notelp }}</td>
+                            <td>{{ $jual->jenisPersyaratan }}</td>
+                            <td>{{ $jual->tanggal }}</td>
+                            <td>{{ $jual->lokasi }}</td>
+                            <td>
+                                <a class="btn btn-outline-warning" href="/editjual/{{ $jual->id }}">Edit</a><br>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table><br>
+                {{ $data->links() }}
+
         <div class="row mt-5">
             <div class="col"></div>
             <div class="col"></div>
             <div class="col-2">
                 <a href="{{ route('admin.tambah') }}" class="btn btn-success"
-                    style="text-decoration: none; margin-left: 30px;">Tambah Data +</a>
+                    style="text-decoration: none; margin-left: 30px;"><i class="fas fa-plus-square"> Tambah agen</i> </a>
             </div>
         </div>
 
@@ -104,10 +150,9 @@
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Gender</th>
-                    <th scope="col">Jabatan</th>
+                    <th scope="col">Nama Agen</th>
+                    <th scope="col">Email Agen</th>
+                    
                     <th scope="col">Aksi</th>
                 </tr>
             </thead>
@@ -117,11 +162,9 @@
                     <td scope="row">{{ $index + $data->firstItem() }}</td>
                     <td>{{ $userAdmin->name }}</td>
                     <td>{{ $userAdmin->email }}</td>
-                    <td>{{ $userAdmin->jenis_kelamin }}</td>
-                    <td>{{ $userAdmin->level }}</td>
+
                     <td>
-                        <a class="btn btn-outline-warning" href="/editAdmin/{{ $userAdmin->id }}">Edit</a>
-                        <a class="btn btn-outline-danger" href="/deleteAdmin/{{ $userAdmin->id }}">Delete</a>
+                        <a class="btn btn-outline-danger" href="/deleteAdmin/{{ $userAdmin->id }}"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 @endforeach

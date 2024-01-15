@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Admin Dashboard</title>
+    <link href="{{ asset('/') }}assets/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <link href="{{ asset('/') }}assets/plugins/fontawesome/css/all.min.css" rel="stylesheet" >
+
     <style>
     /* Add your custom CSS styles here */
 
@@ -52,10 +56,7 @@
 <body>
     <div class="sidebar">
         <a href="{{ route('admin.home') }}">Home</a>
-        <a href="{{ route('admin.inputBerita') }}">Berita</a>
-        <a href="{{ route('admin.inputData') }}">Data</a>
-        <a href="{{ route('admin.buku') }}">Buku</a>
-        <a href="{{ route('admin.peminjaman') }}">Peminjaman</a>
+        
         <a class=" mt-lg-5" href="{{ route('logout') }}">Logout</a>
     </div>
 
@@ -79,11 +80,11 @@
             <div class="col d-flex justify-content-center">
                 <div class="card mt-4" style="width: 800px">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Tambah Data</h5>
+                        <h5 class="card-title text-center">Tambah Agen</h5>
                         <form action="{{ route('postTambahAdmin') }}" method="POST">
                             @csrf
                             <div class="form-group mt-4">
-                                <label class="text-secondary mb-2">Nama Admin</label>
+                                <label class="text-secondary mb-2">Nama Agen</label>
                                 <input type="text" class="form-control border border-secondary form-control" name="name"
                                     required value="{{ old('name') }}">
                                 <span class="text-danger">
@@ -93,7 +94,7 @@
                                 </span>
                             </div><br>
                             <div class="form-group mt-1">
-                                <label class="text-secondary mb-2">Email Admin</label>
+                                <label class="text-secondary mb-2">Email Agen</label>
                                 <input type="email" class="form-control border border-secondary form-control"
                                     name="email" required value="{{ old('email') }}">
                                 <span class="text-danger">
@@ -102,20 +103,9 @@
                                     @enderror
                                 </span>
                             </div><br>
+                           
                             <div class="form-group mt-1">
-                                <label class="text-secondary">Pilih Jenis
-                                    Kelamin</label><br>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="jenisKelamin" value="Laki-laki">
-                                    <label class="form-check-label" for="inlineRadio1">Laki-laki</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="jenisKelamin" value="Perempuan">
-                                    <label class="form-check-label" for="inlineRadio2">Perempuan</label>
-                                </div>
-                            </div><br>
-                            <div class="form-group mt-1">
-                                <label class="text-secondary mb-2">Password Admin</label>
+                                <label class="text-secondary mb-2">Password Agen</label>
                                 <input type="password" class="form-control border border-secondary form-control"
                                     name="password" required>
                                 <span class="text-danger">
@@ -125,7 +115,7 @@
                                 </span>
                             </div><br>
                             <div class="form-group mt-1">
-                                <label class="text-secondary mb-2">Konfirmasi Password Admin</label>
+                                <label class="text-secondary mb-2">Konfirmasi Password Agen</label>
                                 <input type="password" class="form-control border border-secondary form-control"
                                     name="password_confirmation" required>
                                 <span class="text-danger">
@@ -134,14 +124,14 @@
                                     @enderror
                                 </span>
                             </div>
-                            <button type="submit" class="btn btn-success mt-5">Tambah Data Admin</button>
+                            <button type="submit" class="btn btn-success mt-5"><i class="fas fa-plus-square"> Tambah Agen</i></button>
                         </form>
                     </div>
                 </div>
             </div>
         </div><br><br><br><br>
 
-        </d iv>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
